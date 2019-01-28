@@ -1,5 +1,12 @@
+body {
+    background-color: #e5e5e5;
+    margin: 0;
+}
+
 .grid-container {
     display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px 10px;
 }
 
 ul {
@@ -7,7 +14,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(41, 68, 185);
 }
 
 li {
@@ -27,5 +34,5 @@ li a:hover:not(.active) {
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: rgb(31, 50, 134);
 }
