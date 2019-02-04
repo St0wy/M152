@@ -21,7 +21,7 @@ function connectDb() {
     if ($db === null) {
         try {
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-            $db = new PDO("mysql:host=$SERVER;dbname=$DBNAME", $PSEUDO, $PWD, $pdo_options);
+            $db = new PDO("mysql:host=" . SERVER . ";dbname=" . DBNAME, PSEUDO, PWD, $pdo_options);
             $db->exec('SET CHARACTER SET utf8');
         } catch (PDOException $e) {
             die("Erreur : " . $e->getMessage());

@@ -1,4 +1,7 @@
 <?php
+
+require_once "model/postModel.php";
+
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     
     //foreach ($_FILES["img"]["error"] as $key => $error) {
@@ -13,6 +16,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     if(isset($_FILES["img"])){
         $file = $_FILES["img"];
         $uploads_dir = "/uploads";
+        define ('SITE_ROOT', realpath(dirname(__FILE__)) . $uploads_dir);
 
         $fileName = basename($file["name"]);
         $fileType = $file["type"];
@@ -21,9 +25,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $fileError = $file["error"];
 
         if($fileError == 0){
-            move_uploaded_file($fileTmpName, "$uploads_dir/$fileName");
+            move_uploaded_file($fileTmpName, SITE_ROOT . $fileName);
+            $comment = filter_input(INPUT_POST, 'imageDescription', FILTER_SANITIZE_STRING);
+            savePost($comment, $fileType, $fileName);
 
-            
+            header("location:index.php");
         }
     }
 }
