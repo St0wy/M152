@@ -21,17 +21,15 @@ require_once 'dbconnection.php';
  * @param mixed $mediaType Type of the uploaded media
  * @param mixed $mediaName Name of the uploaded media
  */
-function savePost($comment, $mediaType, $mediaName)
+function savePost($comment)
 {
     try {
         $db = connectDb();
-        $sql = "INSERT INTO post (comment, mediaType, mediaName)" .
-            " VALUES (:comment, :mediaType, :mediaName)";
+        $sql = "INSERT INTO post (comment)" .
+            " VALUES (:comment)";
         $request = $db->prepare($sql);
         $arrayToExecute = array(
-            'comment' => $comment,
-            'mediaType' => $mediaType,
-            'mediaName' => $mediaName,
+            'comment' => $comment
         );
 
         if ($request->execute($arrayToExecute)) {
@@ -69,4 +67,27 @@ function getPosts()
         echo $e->getMessage();
         return null;
     }
+}
+
+function saveMedia($fileName, $type, $idPost){
+    try {
+        $db = connectDb();
+        $sql = "INSERT INTO post (comment)" .
+            " VALUES (:comment)";
+        $request = $db->prepare($sql);
+        $arrayToExecute = array(
+            'comment' => $comment
+        );
+
+        if ($request->execute($arrayToExecute)) {
+            return $db->lastInsertId();
+        } else {
+            return null;
+        }
+    } catch (Exeption $e) {
+        echo $e->getMessage();
+        return null;
+    }
+
+    return $request->fetch();
 }
