@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $fileError = $file["error"];
 
         if($fileError == 0){
-            move_uploaded_file($fileTmpName, SITE_ROOT . $fileName);
+            move_uploaded_file($fileTmpName, SITE_ROOT . "/" . $fileName);
             $comment = filter_input(INPUT_POST, 'imageDescription', FILTER_SANITIZE_STRING);
             savePost($comment, $fileType, $fileName);
 

@@ -17,11 +17,9 @@ require_once 'dbconnection.php';
 /**
  * Save the post into the db
  *
- * @param mixed $title       Title of the post.
- * @param mixed $description Description of the post.
- * @param mixed $idUser      Id of the user that posted the post.
- *
- * @return void
+ * @param mixed $comment   Description of the image  
+ * @param mixed $mediaType Type of the uploaded media
+ * @param mixed $mediaName Name of the uploaded media
  */
 function savePost($comment, $mediaType, $mediaName)
 {
@@ -47,4 +45,28 @@ function savePost($comment, $mediaType, $mediaName)
     }
 
     return $request->fetch();
+}
+
+/**
+ * Get all the posts.
+ *
+ * @return mixed Array of the posts or null.
+ */
+function getPosts()
+{
+    try {
+        $db = connectDb();
+        $sql = "SELECT idPost, comment, mediaType, mediaName, datePost FROM post";
+
+        $request = $db->prepare($sql);
+        if ($request->execute()) {
+            $result = $request->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } else {
+            return null;
+        }
+    } catch (Exeption $e) {
+        echo $e->getMessage();
+        return null;
+    }
 }

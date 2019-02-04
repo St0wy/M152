@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body {
     background-color: #e5e5e5;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .flex-container {
@@ -67,5 +70,10 @@ li a:hover:not(.active) {
 
 .welcome-message h1{
     text-align: center;
+    width: 100%;
+}
+
+.post img{
+    display: block;
     width: 100%;
 }

@@ -15,6 +15,17 @@ include "header.php";
         <div class="welcome-message">
             <h1>WELCOME</h1>
         </div>
+
+        <?php 
+        foreach ($posts as $post) {
+            ?>
+            <div class="post">
+                <img src="./uploads/<?php echo($post["mediaName"]); ?>">
+                <p class="img-description"><?php echo($post["comment"]); ?></p>
+            </div>
+            <?php
+        }
+        ?>
     </div>
 </div>
 </body>
