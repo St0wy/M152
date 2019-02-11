@@ -12,6 +12,7 @@ body {
     padding: 20px;
 }
 
+/*#region navbar*/
 ul {
     list-style-type: none;
     margin: 0;
@@ -39,6 +40,7 @@ li a:hover:not(.active) {
 .active {
     background-color: rgb(31, 50, 134);
 }
+/*#endregion*/
 
 .flex-container div div{
     background-color: white;
@@ -76,4 +78,21 @@ li a:hover:not(.active) {
 .post img{
     display: block;
     width: 100%;
+}
+
+.flex-container .upload{
+    background-color: white;
+    width: 50%;
+}
+
+.upload-left{
+    flex: 1;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.upload-right{
+    flex: 1;
+    box-sizing: border-box;
+    padding: 10px;
 }

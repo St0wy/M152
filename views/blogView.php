@@ -3,7 +3,7 @@ $pageTitle = "My Blog";
 include "header.php";
 ?>
 <body>
-<?php include "navbar.php" ?>
+<?php include "navbar.php"?>
 <div class="flex-container">
     <div class="left-column">
         <div class="user-info">
@@ -16,19 +16,36 @@ include "header.php";
             <h1>WELCOME</h1>
         </div>
 
-        <?php 
-        foreach ($posts as $post) {
-            $medias = getMediaFromIdPost($post["idPost"]);
-            foreach ($medias as $media) {
+        <?php
+foreach ($posts as $post) {
+    $medias = getMediaFromIdPost($post["idPost"]);
+    foreach ($medias as $media) {
+        ?>
+        <div class="post">
+            <?php
+            $allowedImageType = array('gif', 'png', 'jpg');
+            $allowedVideoType = array("mp4");
+            //In case the extention is in captial (.PNG ect)
+            $loweredFileName = strtolower($media["fileName"]);
+            $ext = pathinfo($loweredFileName, PATHINFO_EXTENSION);
+            if (in_array($ext, $allowedImageType)) {
             ?>
-            <div class="post">
-                <img src="./uploads/<?php echo($media["fileName"]); ?>">
-                <p class="img-description"><?php echo($post["comment"]); ?></p>
-            </div>
+            <img src="./uploads/<?php echo ($media["fileName"]); ?>">
             <?php
             }
-        }
-        ?>
+            elseif (in_array($ext, $allowedVideoType)) {
+            ?>
+            <video controls>
+                <source src="./uploads/<?php echo $media["fileName"]; ?>" type="<?php echo $media["type"]; ?>">
+                Your browser does not support the video tag.
+            </video> 
+            <?php } ?>
+            <p class="img-description"><?php echo ($post["comment"]); ?></p>
+        </div>
+        <?php
+    }
+}
+?>
     </div>
 </div>
 </body>

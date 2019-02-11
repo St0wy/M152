@@ -52,7 +52,7 @@ function getPosts()
     $result = null;
     try {
         $db = connectDb();
-        $sql = "SELECT idPost, comment, datePost FROM post";
+        $sql = "SELECT idPost, comment, datePost FROM post ORDER BY datePost DESC";
 
         $request = $db->prepare($sql);
         if ($request->execute()) {
