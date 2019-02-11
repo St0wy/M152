@@ -3,4 +3,4 @@
 require_once "model/postModel.php";
 $posts = getPosts();
 
-require "views/blog.php";
+require "views/blogView.php";

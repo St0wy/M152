@@ -23,26 +23,23 @@ require_once 'dbconnection.php';
  */
 function savePost($comment)
 {
+    $result = null;
     try {
         $db = connectDb();
-        $sql = "INSERT INTO post (comment)" .
-            " VALUES (:comment)";
+        $sql = "INSERT INTO post (comment) VALUES (:comment)";
         $request = $db->prepare($sql);
         $arrayToExecute = array(
             'comment' => $comment
         );
 
         if ($request->execute($arrayToExecute)) {
-            return $db->lastInsertId();
-        } else {
-            return null;
+            $result = $db->lastInsertId();
         }
     } catch (Exeption $e) {
         echo $e->getMessage();
-        return null;
     }
 
-    return $request->fetch();
+    return $result;
 }
 
 /**
@@ -52,42 +49,62 @@ function savePost($comment)
  */
 function getPosts()
 {
+    $result = null;
     try {
         $db = connectDb();
-        $sql = "SELECT idPost, comment, mediaType, mediaName, datePost FROM post";
+        $sql = "SELECT idPost, comment, datePost FROM post";
 
         $request = $db->prepare($sql);
         if ($request->execute()) {
             $result = $request->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        } else {
-            return null;
         }
     } catch (Exeption $e) {
         echo $e->getMessage();
-        return null;
     }
+    
+    return $result;
 }
 
-function saveMedia($fileName, $type, $idPost){
+function saveMedia($fileName, $type, $idPost) 
+{
+    $result = null;
     try {
         $db = connectDb();
-        $sql = "INSERT INTO post (comment)" .
-            " VALUES (:comment)";
+        $sql = "INSERT INTO media (fileName, type, idPost)" .
+            " VALUES (:fileName, :type, :idPost)";
         $request = $db->prepare($sql);
         $arrayToExecute = array(
-            'comment' => $comment
+            "fileName" => $fileName,
+            "type" => $type,
+            "idPost" => $idPost
         );
 
         if ($request->execute($arrayToExecute)) {
-            return $db->lastInsertId();
-        } else {
-            return null;
+            $result = $db->lastInsertId();
         }
     } catch (Exeption $e) {
         echo $e->getMessage();
-        return null;
     }
 
-    return $request->fetch();
+    return $result;
+}
+
+function getMediaFromIdPost($idPost)
+{
+    $result = null;
+    try {
+        $db = connectDb();
+        $sql = "SELECT idMedia, fileName, type FROM media WHERE idPost=:idPost";
+
+        $request = $db->prepare($sql);
+        $arrayToExecute = array("idPost" => $idPost);
+
+        if ($request->execute($arrayToExecute)) {
+            $result = $request->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (Exeption $e) {
+        echo $e->getMessage();
+    }
+
+    return $result;
 }

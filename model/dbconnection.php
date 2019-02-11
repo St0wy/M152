@@ -6,15 +6,17 @@
  * contient la fonctions et les donnees de connexion à la base de donnees
  */
 
+define("SERVER", "127.0.0.1");
+define("PSEUDO", "m152Admin");
+define("PWD", "123");
+define("DBNAME", "m152");
+
 /**
  * effectue la connexion à la base de données
  * @return PDO objet de connexion à la base de données
  */
 function connectDb() {
-    define("SERVER", "127.0.0.1");
-    define("PSEUDO", "m152Admin");
-    define("PWD", "123");
-    define("DBNAME", "m152");
+    
 
     static $db = null;
 

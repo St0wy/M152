@@ -18,12 +18,15 @@ include "header.php";
 
         <?php 
         foreach ($posts as $post) {
+            $medias = getMediaFromIdPost($post["idPost"]);
+            foreach ($medias as $media) {
             ?>
             <div class="post">
-                <img src="./uploads/<?php echo($post["mediaName"]); ?>">
+                <img src="./uploads/<?php echo($media["fileName"]); ?>">
                 <p class="img-description"><?php echo($post["comment"]); ?></p>
             </div>
             <?php
+            }
         }
         ?>
     </div>
