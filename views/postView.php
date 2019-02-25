@@ -13,6 +13,14 @@ include "header.php";
                 <input type="text" name="comment" id="comment"> <br>
                 <button type="submit">Submit</button>
             </form>
+
+            <h1>Audio</h1>
+            <form action="./post.php" method="post" enctype="multipart/form-data">
+                Select a file: <input type="file" name="uploadedFile[]" accept="audio/*" multiple><br>
+                <label for="comment">Description du son</label>
+                <input type="text" name="comment" id="comment"> <br>
+                <button type="submit">Submit</button>
+            </form>
         </div>
         <div class="upload upload-right">
             <h1>Videos</h1>

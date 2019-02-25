@@ -17,14 +17,17 @@ include "header.php";
         </div>
 
         <?php
-foreach ($posts as $post) {
+foreach ($posts as $post) { ?>
+        <div class="post">
+    <?php
     $medias = getMediaFromIdPost($post["idPost"]);
     foreach ($medias as $media) {
         ?>
-        <div class="post">
+        
             <?php
             $allowedImageType = array('gif', 'png', 'jpg');
             $allowedVideoType = array("mp4");
+            $allowedAudioType = array("mp3");
             //In case the extention is in captial (.PNG ect)
             $loweredFileName = strtolower($media["fileName"]);
             $ext = pathinfo($loweredFileName, PATHINFO_EXTENSION);
@@ -35,15 +38,27 @@ foreach ($posts as $post) {
             }
             elseif (in_array($ext, $allowedVideoType)) {
             ?>
-            <video controls>
+            <video autoplay>
                 <source src="./uploads/<?php echo $media["fileName"]; ?>" type="<?php echo $media["type"]; ?>">
                 Your browser does not support the video tag.
-            </video> 
+            </video>
+            <?php 
+            }
+            elseif (in_array($ext, $allowedAudioType)) {
+            ?>
+            <audio controls>
+                <source src="./uploads/<?php echo $media["fileName"]; ?>" type="<?php echo $media["type"]; ?>">
+                Your browser does not support the audio element.
+            </audio> 
             <?php } ?>
-            <p class="img-description"><?php echo ($post["comment"]); ?></p>
-        </div>
+            
+        
         <?php
     }
+    ?>
+            <p class="img-description"><?php echo ($post["comment"]); ?></p>
+        </div>
+    <?php 
 }
 ?>
     </div>
