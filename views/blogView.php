@@ -1,4 +1,13 @@
 <?php
+/**
+ * Vue de la timeline du blog
+ * views/blogView.php
+ *
+ * PHP Version 7.2.10
+ * 
+ * @author   Fabian Huber <fabian.hbr@eduge.ch>
+ */ 
+
 $pageTitle = "My Blog";
 include "header.php";
 ?>
@@ -49,7 +58,7 @@ foreach ($posts as $post) { ?>
             <audio controls>
                 <source src="./uploads/<?php echo $media["fileName"]; ?>" type="<?php echo $media["type"]; ?>">
                 Your browser does not support the audio element.
-            </audio> 
+            </audio>
             <?php } ?>
             
         

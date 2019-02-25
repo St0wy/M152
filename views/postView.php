@@ -1,4 +1,12 @@
-<?php 
+<?php
+/**
+ * Formulaire d'envois des medias
+ * views/postViews.php
+ *
+ * PHP Version 7.2.10
+ *
+ * @author   Fabian Huber <fabian.hbr@eduge.ch>
+ */ 
 $pageTitle = "Posts";
 include "header.php";
 ?>

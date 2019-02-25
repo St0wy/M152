@@ -5,11 +5,7 @@
  *
  * PHP Version 7.2.10
  *
- * @category File
- * @package  File
  * @author   Fabian Huber <fabian.hbr@eduge.ch>
- * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
- * @link     http://127.0.0.1/MiniForum/public/php
  */
 
 require_once 'dbconnection.php';
