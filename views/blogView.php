@@ -47,7 +47,7 @@ foreach ($posts as $post) { ?>
             }
             elseif (in_array($ext, $allowedVideoType)) {
             ?>
-            <video autoplay>
+            <video autoplay loop>
                 <source src="./uploads/<?php echo $media["fileName"]; ?>" type="<?php echo $media["type"]; ?>">
                 Your browser does not support the video tag.
             </video>
@@ -66,6 +66,7 @@ foreach ($posts as $post) { ?>
     }
     ?>
             <p class="img-description"><?php echo ($post["comment"]); ?></p>
+            <a href="./deletePost.php?id=<?php echo $post["idPost"]; ?>">Delete</a>
         </div>
     <?php 
 }

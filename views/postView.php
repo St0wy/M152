@@ -16,7 +16,7 @@ include "header.php";
         <div class="upload upload-left">
             <h1>Images</h1>
             <form action="./post.php" method="post" enctype="multipart/form-data">
-                Select a file: <input type="file" name="uploadedFile[]" accept="image/*" multiple><br>
+                Select a file: <input type="file" name="uploadedFile[]" accept="image/gif, image/png, image/jpg" multiple><br>
                 <label for="comment">Description de l'image</label>
                 <input type="text" name="comment" id="comment"> <br>
                 <button type="submit">Submit</button>
@@ -24,7 +24,7 @@ include "header.php";
 
             <h1>Audio</h1>
             <form action="./post.php" method="post" enctype="multipart/form-data">
-                Select a file: <input type="file" name="uploadedFile[]" accept="audio/*" multiple><br>
+                Select a file: <input type="file" name="uploadedFile[]" accept="audio/mpeg" multiple><br>
                 <label for="comment">Description du son</label>
                 <input type="text" name="comment" id="comment"> <br>
                 <button type="submit">Submit</button>
@@ -33,7 +33,7 @@ include "header.php";
         <div class="upload upload-right">
             <h1>Videos</h1>
             <form action="./post.php" method="post" enctype="multipart/form-data">
-                Select a file: <input type="file" name="uploadedFile[]" accept="video/*" multiple><br>
+                Select a file: <input type="file" name="uploadedFile[]" accept="video/mp4" multiple><br>
                 <label for="comment">Description de la video</label>
                 <input type="text" name="comment" id="comment"> <br>
                 <button type="submit">Submit</button>

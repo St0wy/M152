@@ -9,6 +9,7 @@
  */ 
 
 require_once "model/postModel.php";
+require_once "model/mediaModel.php";
 $posts = getPosts();
 
 require "views/blogView.php";

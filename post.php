@@ -9,6 +9,7 @@
  */ 
 
 require_once "model/postModel.php";
+require_once "model/mediaModel.php";
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     define("UPLOAD_PATH", realpath(dirname(__FILE__)) . "/uploads");
 
