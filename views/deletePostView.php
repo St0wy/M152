@@ -1,7 +1,7 @@
 <?php
 /**
  * Vue de la page de suppresion des posts
- * views/deleteForm.php
+ * views/deletePostView.php
  *
  * PHP Version 7.2.10
  * 
@@ -11,7 +11,6 @@
 $pageTitle = "Delete Post";
 include "header.php";
 ?>
-<body>
     <form action="./deletePost.php" method="post">
         <p>Voulez-vous supprimer votre post?</p>
         <input type="hidden" name="idPostToDelete" value="<?php echo $idPostToDelete; ?>">

@@ -39,4 +39,4 @@ if($method === "POST"){
     }
 }
 
-require "views/deleteForm.php";
+require "views/deletePostView.php";

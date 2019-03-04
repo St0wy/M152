@@ -10,3 +10,5 @@ $pageName = basename($_SERVER['PHP_SELF']);
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title><?php echo($pageTitle); ?> </title>
 </head>
+<body>
+<?php include "navbar.php"?>

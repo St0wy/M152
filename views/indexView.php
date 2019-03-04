@@ -11,8 +11,6 @@
 $pageTitle = "My Blog";
 include "header.php";
 ?>
-<body>
-<?php include "navbar.php"?>
 <div class="flex-container">
     <div class="left-column">
         <div class="user-info">
