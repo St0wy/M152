@@ -8,6 +8,15 @@
  * @author   Fabian Huber <fabian.hbr@eduge.ch>
  */
 
+/**
+ * saveMedia
+ *
+ * @param  mixed $fileName
+ * @param  mixed $type
+ * @param  mixed $idPost
+ *
+ * @return void
+ */
 function saveMedia($fileName, $type, $idPost) 
 {
     $result = null;
@@ -32,6 +41,13 @@ function saveMedia($fileName, $type, $idPost)
     return $result;
 }
 
+/**
+ * getMediaFromIdPost
+ *
+ * @param  mixed $idPost
+ *
+ * @return void
+ */
 function getMediaFromIdPost($idPost)
 {
     $result = null;
@@ -52,6 +68,22 @@ function getMediaFromIdPost($idPost)
     return $result;
 }
 
+/**
+ * editMedia
+ *
+ * @return void
+ */
+function editMedia(){
+    
+}
+
+/**
+ * deleteMedia
+ *
+ * @param  mixed $idMedia
+ *
+ * @return void
+ */
 function deleteMedia($idMedia){
     $result = null;
     try {
@@ -72,6 +104,13 @@ function deleteMedia($idMedia){
     return $result;
 }
 
+/**
+ * deleteMediaFromIdPost
+ *
+ * @param  mixed $idPost
+ *
+ * @return void
+ */
 function deleteMediaFromIdPost($idPost){
     $result = null;
     try {

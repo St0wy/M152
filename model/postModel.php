@@ -13,9 +13,7 @@ require_once 'dbconnection.php';
 /**
  * Save the post into the db
  *
- * @param mixed $comment   Description of the image  
- * @param mixed $mediaType Type of the uploaded media
- * @param mixed $mediaName Name of the uploaded media
+ * @param string $comment   Description of the image
  */
 function savePost($comment)
 {
@@ -25,7 +23,7 @@ function savePost($comment)
         $sql = "INSERT INTO post (comment) VALUES (:comment)";
         $request = $db->prepare($sql);
         $arrayToExecute = array(
-            'comment' => $comment
+            'comment' => $comment,
         );
 
         if ($request->execute($arrayToExecute)) {
@@ -57,11 +55,19 @@ function getPosts()
     } catch (Exeption $e) {
         echo $e->getMessage();
     }
-    
+
     return $result;
 }
 
-function getPostFromId($idPost){
+/**
+ * getPostFromId
+ *
+ * @param  int $idPost
+ *
+ * @return mixed
+ */
+function getPostFromId($idPost)
+{
     $result = null;
     try {
         $db = connectDb();
@@ -71,7 +77,14 @@ function getPostFromId($idPost){
         $arrayToExecute = array("idPost" => $idPost);
 
         if ($request->execute($arrayToExecute)) {
-            $result = $request->fetchAll(PDO::FETCH_ASSOC);
+            //To fix a wierd bug
+            $fetch = $request->fetchAll(PDO::FETCH_ASSOC);
+            if($fetch == null){
+                $result = $fetch;
+            }
+            else{
+                $result = $fetch[0];
+            }
         }
     } catch (Exeption $e) {
         echo $e->getMessage();
@@ -80,7 +93,41 @@ function getPostFromId($idPost){
     return $result;
 }
 
-function deletePost($idPost){
+
+/**
+ * updatePost
+ *
+ * @return mixed
+ */
+function updatePost($idPost, $comment){
+    $result = null;
+    try {
+        $db = connectDb();
+        $sql = "UPDATE post SET comment = :comment WHERE idPost = :idPost";
+        $request = $db->prepare($sql);
+        $arrayToExecute = array(
+            'comment' => $comment,
+        );
+
+        if ($request->execute($arrayToExecute)) {
+            $result = $db->lastInsertId();
+        }
+    } catch (Exeption $e) {
+        echo $e->getMessage();
+    }
+
+    return $result;
+}
+
+/**
+ * deletePost
+ *
+ * @param  mixed $idPost id of the post you want to delete
+ *
+ * @return mixed
+ */
+function deletePost($idPost)
+{
     $result = null;
     try {
         $db = connectDb();

@@ -26,11 +26,11 @@ include "header.php";
         <?php
 foreach ($posts as $post) { ?>
         <div class="post">
-    <?php
+            <?php
     $medias = getMediaFromIdPost($post["idPost"]);
     foreach ($medias as $media) {
         ?>
-        
+
             <?php
             $allowedImageType = array('gif', 'png', 'jpg');
             $allowedVideoType = array("mp4");
@@ -58,18 +58,20 @@ foreach ($posts as $post) { ?>
                 Your browser does not support the audio element.
             </audio>
             <?php } ?>
-            
-        
-        <?php
+
+
+            <?php
     }
     ?>
             <p class="img-description"><?php echo ($post["comment"]); ?></p>
             <a href="./deletePost.php?id=<?php echo $post["idPost"]; ?>">Delete</a>
+            <a href="./editPost.php?id=<?php echo $post["idPost"]; ?>">Edit</a>
         </div>
-    <?php 
+        <?php 
 }
 ?>
     </div>
 </div>
 </body>
+
 </html>

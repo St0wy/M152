@@ -14,7 +14,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     define("UPLOAD_PATH", realpath(dirname(__FILE__)) . "/uploads");
 
     $comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING);
-    $postId = savePost($comment);
     $file = $_FILES["uploadedFile"];
     foreach ($file["error"] as $key => $error) {
         if ($error == UPLOAD_ERR_OK) {
@@ -26,8 +25,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 $temp = explode(".", $fileName);
                 $newFileName = array_values($temp)[0] . round(microtime(true)) . rand() . '.' . end($temp);
 
-                move_uploaded_file($tmp_name, UPLOAD_PATH . "/$newFileName");
-                saveMedia($newFileName, $fileType, $postId);
+                $filePath = UPLOAD_PATH . "/$newFileName";
+                move_uploaded_file($tmp_name, $filePath);
+                if(file_exists($filePath)){
+                    $postId = savePost($comment);
+                    saveMedia($newFileName, $fileType, $postId);
+                }
             }
         }
     }
